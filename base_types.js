@@ -58,7 +58,7 @@ var man = {
     name: "Robb",
     age: 22,
     vaccination: true,
-    gender: "male",
+    // gender: "male",
     setData: function (id, name, age, vaccination, gender) {
         this.id = id;
         this.name = name;
@@ -130,3 +130,11 @@ function arrJoin(array, mod) {
     return array.join(mod);
 }
 console.log(arrJoin([1, 2, 3, 4, 5, 6, "rwer"], ''));
+var car = {
+    body: "sedan",
+    engine: "v8",
+    inject: 'turbo',
+    maxPit: 200,
+    boxAT: true
+};
+console.log(car);
