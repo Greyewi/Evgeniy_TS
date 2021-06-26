@@ -58,7 +58,7 @@ var man = {
     name: "Robb",
     age: 22,
     vaccination: true,
-    // gender: "male",
+    gender: "male",
     setData: function (id, name, age, vaccination, gender) {
         this.id = id;
         this.name = name;

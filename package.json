@@ -10,6 +10,6 @@
     "typescript": "^4.3.4"
   },
   "scripts": {
-    "start": "tsc base_types.ts && node base_types.js"
+    "start": "tsc bad_code_myVer.ts && node bad_code_myVer.js"
   }
 }

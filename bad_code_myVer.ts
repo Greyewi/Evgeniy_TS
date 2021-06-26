@@ -1,14 +1,11 @@
-function deliveryMethod(): string {
+function deliveryMethod(addr: string): string {
   // TODO
-  const foo: (null | object) = null // for example
-  // TODO
-
-  return foo ? 'overnight' : 'standard'
+  return addr ? 'overnight' : 'standard'
 }
 
 function shipWeight(): number {
   const id: string = 'weight'
-  const el: any = document.getElementById(id) // ? how to specify type for html object?
+  const el: HTMLElement = document?.getElementById(id) // ? how to specify type for html object?
 
   if (!el) {
     return 0
@@ -18,20 +15,29 @@ function shipWeight(): number {
   }
 }
 
-function sendUpdates(emailAddr: string | string[]): void {
+// function sendUpdates<T>(addr: T): T
+
+function sendUpdates(addr: string): string
+function sendUpdates(addr: string[]): string[]
+
+function sendUpdates(emailAddr: string | string[]) {
   
-  function sendEmail(addr: string): void {
-    console.log(`Shipping to ${addr} via ${deliveryMethod()} delivery`)
+  function sendEmail(addr: string): string | string[] {
+    return `Shipping to ${addr} via ${deliveryMethod(addr)} delivery`
+
     if (shipWeight() > 100) {
-      console.log('WARNING: Oversize package')
+      return 'WARNING: Oversize package'
     }
   }
 
   if (Array.isArray(emailAddr)) {
-    emailAddr.forEach((item: string): void => { // forEach instead of map
-      sendEmail(item.trim())
+    return emailAddr.map((item: string): string | string[] => {
+      return sendEmail(item.trim())
     })
   } else {
-    sendEmail(emailAddr.trim())
+    return sendEmail(emailAddr.trim())
   }
 }
+
+console.log(sendUpdates("Pikulki 56"))
+console.log(sendUpdates(["Pikulki 56"]))

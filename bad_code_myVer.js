@@ -1,12 +1,10 @@
-function deliveryMethod() {
+function deliveryMethod(addr) {
     // TODO
-    var foo = null; // for example
-    // TODO
-    return foo ? 'overnight' : 'standard';
+    return addr ? 'overnight' : 'standard';
 }
 function shipWeight() {
     var id = 'weight';
-    var el = document.getElementById(id); // ? how to specify type for html object?
+    var el = document === null || document === void 0 ? void 0 : document.getElementById(id); // ? how to specify type for html object?
     if (!el) {
         return 0;
     }
@@ -17,17 +15,19 @@ function shipWeight() {
 }
 function sendUpdates(emailAddr) {
     function sendEmail(addr) {
-        console.log("Shipping to " + addr + " via " + deliveryMethod() + " delivery");
+        return "Shipping to " + addr + " via " + deliveryMethod(addr) + " delivery";
         if (shipWeight() > 100) {
-            console.log('WARNING: Oversize package');
+            return 'WARNING: Oversize package';
         }
     }
     if (Array.isArray(emailAddr)) {
-        emailAddr.forEach(function (item) {
-            sendEmail(item.trim());
+        return emailAddr.map(function (item) {
+            return sendEmail(item.trim());
         });
     }
     else {
-        sendEmail(emailAddr.trim());
+        return sendEmail(emailAddr.trim());
     }
 }
+console.log(sendUpdates("Pikulki 56"));
+console.log(sendUpdates(["Pikulki 56"]));
